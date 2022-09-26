@@ -1,0 +1,49 @@
+@import './index.scss';
+
+$images: '../assets/images/building-1.jpg', '../assets/images/house-2.jpg', '../assets/images/house-1.jpg';
+$colors: 'red', 'yellow', 'gray';
+
+.featured {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  scroll-snap-align: start;
+
+  &-container {
+    height: 85%;
+    width: $width;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+  }
+
+  &-property {
+    flex: 1;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+
+    & :nth-child(1) {
+      grid-row: span 2;
+    }
+
+    // & :nth-child(2) {
+    //   background-color: red;
+    // }
+
+
+    @for $i from 1 through length($colors) {
+      $c: nth($images, $i);
+
+      & :nth-child(#{$i}) .featuredCard {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url($c);
+        background-position: center;
+        background-size: cover;
+      }
+    }
+
+  }
+}

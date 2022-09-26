@@ -1,0 +1,19 @@
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scaleX(120%);
+  }
+}
+
+@keyframes shrink {
+  from {
+    background-size: 130%;
+  }
+}
+
+@keyframes fadeInBottom {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+}
