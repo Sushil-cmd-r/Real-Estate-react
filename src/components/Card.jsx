@@ -2,11 +2,12 @@ import { Bathtub, Fullscreen, KingBed } from '@material-ui/icons'
 import '../styles/card.scss'
 import image from '/home/sushil/Projects/edi/src/assets/images/house-4.jpg'
 
-const Card = () => {
+const Card = ({ index, inView }) => {
+
   return (
-    <div className='card'>
+    <div className={`card ${inView && 'appear'}`} style={{ transitionDelay: `${index * 70}ms` }}>
       <div className="card-top">
-        <img src={image} alt="image" />
+        <img src={image} alt="image" className={`${inView && 'appear'}`} style={{ transitionDelay: `${index * 70}ms` }} />
       </div>
       <div className="card-bottom">
         <div className="card-name">

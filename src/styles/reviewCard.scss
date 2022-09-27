@@ -1,0 +1,50 @@
+.reviewCard {
+  height: 70%;
+  min-width: 55%;
+  border-radius: 15px;
+  border: 1px solid #222;
+  position: absolute;
+  background-color: white;
+  z-index: -1;
+
+  &.appear {
+    animation: spread 1s ease;
+  }
+
+  @for $i from -4 through 4 {
+    &-#{$i} {
+      transition: all ease 400ms;
+
+
+      @if $i ==0 {
+        transform: translateX(0) scale(1);
+        z-index: 3;
+      }
+
+      @if abs($i)==1 {
+        $c: abs($i)/$i;
+        transform: translateX(150px * $c) scale(90%);
+        z-index: 2;
+      }
+
+      @if abs($i)==2 {
+        $c: abs($i)/$i;
+        transform: translateX(280px * $c) scale(80%);
+        z-index: 1;
+      }
+
+      @if abs($i)>2 {
+        $c: abs($i)/$i;
+        transform: translateX(280px * $c) scale(80%);
+        z-index: -1;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@keyframes spread {
+  from {
+    transform: translateX(0);
+  }
+}

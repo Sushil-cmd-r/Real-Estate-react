@@ -1,4 +1,6 @@
 import { LocationOn } from '@material-ui/icons'
+import { useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 import '../styles/filter.scss'
 import Card from './Card'
 
@@ -30,20 +32,26 @@ const Navbar = () => {
   )
 }
 
+
+
 const Filter = () => {
+  const { ref, inView } = useInView({
+    threshold: 1,
+  });
+
+
   return (
-    <section className='filter' id='filter'>
+    <section className='filter' id='filter' >
       <div className="filter-container">
-        <Navbar />
+        <div ref={ref}>
+          <Navbar />
+        </div>
         <div className="filter-cards">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {
+            [...Array(8)].map((e, i) => (
+              <Card key={i} index={i + 1} inView={inView} />
+            ))
+          }
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ $colors: 'red', 'yellow', 'gray';
   width: 100vw;
   display: flex;
   justify-content: center;
-  scroll-snap-align: start;
+  scroll-snap-align: end;
 
   &-container {
     height: 85%;
@@ -30,20 +30,43 @@ $colors: 'red', 'yellow', 'gray';
       grid-row: span 2;
     }
 
-    // & :nth-child(2) {
-    //   background-color: red;
-    // }
-
-
-    @for $i from 1 through length($colors) {
-      $c: nth($images, $i);
-
-      & :nth-child(#{$i}) .featuredCard {
-        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url($c);
+    @for $i from 1 through length($images) {
+      & :nth-child(#{$i}).featuredCard {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(nth($images,$i));
         background-position: center;
         background-size: cover;
       }
     }
+  }
 
+  &Card {
+    box-shadow: 5px 5px 2px #ccc;
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    height: 100%;
+    transition: all 800ms ease-in-out;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+
+    &.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &-info {
+      height: 7rem;
+      width: 100%;
+      background-color: white;
+      border-radius: inherit;
+      margin-top: auto;
+      transition: all 600ms ease-in-out;
+      transform: scaleY(0);
+
+      &.grow {
+        transform: scaleY(1);
+      }
+    }
   }
 }

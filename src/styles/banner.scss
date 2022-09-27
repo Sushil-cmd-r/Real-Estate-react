@@ -3,7 +3,7 @@
 
 .banner {
   scroll-snap-align: end;
-  height: 100%;
+  height: calc(100vh - 5rem);
   width: 100vw;
   position: relative;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),

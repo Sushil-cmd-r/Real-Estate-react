@@ -3,17 +3,21 @@ import { useEffect, useState } from 'react'
 import '../styles/search.scss'
 
 const Search = ({ inView }) => {
-  const [classes, setClasses] = useState("search-container")
+  const [classes, setClasses] = useState("appear")
   useEffect(() => {
-    if (!inView) setClasses('search-container float')
-    else setClasses('search-container')
+    if (!inView) setClasses('float')
+    else {
+      setClasses('appear')
+    }
   }, [inView])
+
+
 
   return (
     <div className='search'>
-      <div className={classes}>
-        <div className='search-input'></div>
-        <div className='search-icon'>
+      <div className='search-container'>
+        <div className={`search-input ${inView && 'appear'}`}></div>
+        <div className={`search-icon ${classes}`}>
           <SearchOutlined fontSize='large' />
         </div>
       </div>
